@@ -19,9 +19,8 @@ The repository contains:
 
 ## Automation using COM
 
-The Labchart application can be controlled programmatically using **Windows COM (Component Object Model)**, a software communication technology created by Microsoft. 
 
-Labchart provides an API that enables interaction with the application through a COM interface. This interface can be accessed in a Python script using the `win32com.client` module (a module from the `pywin32` library, which offers Python bindings for the Windows COM API).
+Labchart provides an API that enables interaction with the application through a **Windows COM (Component Object Model)** interface. This interface can be accessed in a Python script using the `win32com.client` module (*a module from the `pywin32` library that offers Python bindings for the Windows COM API*).
 
 A simple example is shown below:
 
@@ -37,14 +36,22 @@ labchart = win32com.client.Dispatch("ADIChart.Application")
 filepath = "" 
 
 # Open the specified document in Labchart   
-doc = labchart.Open(filepath)
+document = labchart.Open(filepath)
 
 # Add the comment "Hello World!" to the end of channel 1
 channelIndex = 0 # Note: Labchart lanes are zero indexed. 
-doc.AddCommentAtEnd(channelIndex, "Hello World!")
+document.AddCommentAtEnd(channelIndex, "Hello World!")
 ```
 
-The `doc` object instantiated in the code example above can be used to an array of call commands specific to the opened document. A list of functions available on the document object can be found in the Macro Editor within the Labchart application (accesible by either creating a new macro or editing an existing macro).
+The `document` object instantiated in the code example above, provides an interface for controlling the opened Labchart document. A list of functions available on the interface can be found by running the `dir()` command:
+
+```
+dir(doc)
+
+['Activate', 'AddCommentAtSelection', 'AddRef', 'AddToDataPad', 'AppendComment', 'AppendFile', 'AppendFileEx', 'Application', 'Close', 'CreatePlot', 'FullName', 'GetChannelData', 'GetChannelName', 'GetDataPadColumnChannel', 'GetDataPadColumnFuncName', 'GetDataPadColumnUnit', 'GetDataPadCurrentValue', 'GetDataPadValue', 'GetDigitalInputBit', 'GetDigitalInputState', 'GetDigitalOutputBit', 'GetDigitalOutputState', 'GetIDsOfNames', 'GetName', 'GetPlot', 'GetPlotId', 'GetRecordLength', 'GetRecordSecsPerTick', 'GetRecordStartDate', 'GetScopeChannelData', 'GetSelectedData', 'GetSelectedValue', 'GetTypeInfo', 'GetTypeInfoCount', 'GetUnits', 'GetViewPos', 'ImportMacros', 'Invoke', 'IsChannelSelected', 'IsRecordMode', 'IsSampling', 'Macros', 'MatLabPutChannelData', 'MatLabPutFullMatrix', 'Name', 'NumberOfChannels', 'NumberOfDisplayedChannels', 'NumberOfRecords', 'PLCDebugCommand', 'Parent', 'Path', 'PlayMacro', 'PlayMessage', 'Print', 'QueryInterface', 'RecordTimeToTickPosition', 'Release', 'ResetSelection', 'SamplingRecord', ...]
+```
+
+
 
 (//TODO: Improve quality of screenshot below and add annotations)
 

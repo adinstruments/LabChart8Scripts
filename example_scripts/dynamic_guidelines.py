@@ -18,7 +18,6 @@ def invoke_com_method(com_object, method_name, *args):
 
 def getDataFromEndOfLastBlock(doc, channelNumber, blockNumber, duration):
     lastBlock = doc.NumberOfRecords -1
-    # numberOfBlocks = doc.
     secsPerTick = doc.GetRecordSecsPerTick(lastBlock)
     ticksPerSecond = 1/secsPerTick
     n_samples = round(duration*ticksPerSecond)
@@ -39,7 +38,7 @@ doc = labchart.Open(filepath)   # Open the specified document in Labchart
 channelForGuideLine = 0        # The channel you want to add guidelines to
 percentageOfMax = 20	        # The percentage of the maximum you want the second guideline to be displayed at
 maximumColumnInDataPad = 1      # The column used on the datapad for keeping track of the maximum
-waitTimeBeforeRecalculate = 4   # The time to wait before recalculating the maximum
+waitTimeBeforeRecalculate = 2   # The time to wait before recalculating the maximum
 # ------------------------------------------------------------------------------
 
 rollingMaximum = 0		        # Variable to hold the rolling maximum value
