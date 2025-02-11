@@ -80,13 +80,11 @@ while True:
     time.sleep(waitTimeBeforeRecalculate)
     data = getDataFromEndOfLastBlock(doc, channelForGuideLine + 1,waitTimeBeforeRecalculate)
     maxValueInMostRecentSelection = max(data)
-    print("Rolling maximum:", rollingMaximum)
-    print("Max in most recent data:", maxValueInMostRecentSelection, "\n")
 
     if (maxValueInMostRecentSelection > rollingMaximum):
         rollingMaximum = maxValueInMostRecentSelection 
 
-
+    # Update the guidelines with the latest maximum value
     invoke_com_method(doc, "SetGuidelineValue", channelForGuideLine, 1, rollingMaximum, "V", "")
     invoke_com_method(doc, "SetGuideLineValue", channelForGuideLine, 2, rollingMaximum - percentageOfMax/100*rollingMaximum , "V", "")
 

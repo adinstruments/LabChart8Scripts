@@ -5,15 +5,11 @@ is (//TODO: Generic sales pitch...) from
 ADInstruments. This repository contains a number of templates that demonstrate
 how to programmatically control the Labchart application using a Python script.
 
-<!-- ---
+---
 
 The repository contains:
- + [`stimulator_scripts/`](./stimulator_scripts): Examples of how to use
-   LabChart Lightning's scripting capabilities to output custom stimulus
-   waveforms.
- + [`table_analyses/`](./table_analyses): Template scripts for various
-   programming languages that show how to run statistical analyses on the
-   summary data exported from LabChart Lightning. -->
+ + [`example_scripts/`](./example_scripts): Examples of Labchart automation using Python.
+
 
 
 
@@ -59,7 +55,7 @@ A larger subset of commands can be discovered within the Labchart Macro feature 
 
 <a id="figure-1"></a>
 <figure>
-  <img src="macro_editor.png" alt="Labchart Macro Editor" style="width:100%">
+  <img src=".images/labchart_macro_editor.png" alt="Labchart Macro Editor" style="width:100%">
   <figcaption>Figure 1: The Labchart - Macro Editor window. Functions are listed in the right-hand column. Selecting a function displays extra information, such as a description and the required arguments. </figcaption>
 </figure>
 
