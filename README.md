@@ -52,18 +52,19 @@ dir(doc)
 ['Activate', 'AddCommentAtSelection', 'AddRef', 'AddToDataPad', 'AppendComment', 'AppendFile', 'AppendFileEx', 'Application', 'Close', 'CreatePlot', 'FullName', 'GetChannelData', 'GetChannelName', 'GetDataPadColumnChannel', 'GetDataPadColumnFuncName', 'GetDataPadColumnUnit', 'GetDataPadCurrentValue', 'GetDataPadValue', 'GetDigitalInputBit', 'GetDigitalInputState', 'GetDigitalOutputBit', 'GetDigitalOutputState', 'GetIDsOfNames', 'GetName', 'GetPlot', 'GetPlotId', 'GetRecordLength', 'GetRecordSecsPerTick', 'GetRecordStartDate', 'GetScopeChannelData', 'GetSelectedData', 'GetSelectedValue', 'GetTypeInfo', 'GetTypeInfoCount', 'GetUnits', 'GetViewPos', 'ImportMacros', 'Invoke', 'IsChannelSelected', 'IsRecordMode', 'IsSampling', 'Macros', 'MatLabPutChannelData', 'MatLabPutFullMatrix', 'Name', 'NumberOfChannels', 'NumberOfDisplayedChannels', 'NumberOfRecords', 'PLCDebugCommand', 'Parent', 'Path', 'PlayMacro', 'PlayMessage', 'Print', 'QueryInterface', 'RecordTimeToTickPosition', 'Release', 'ResetSelection', 'SamplingRecord', ...]
 ```
 
-Labcharts public COM interface was developed incrementally and therefore only a subset of the available commands are shown by the `dir()` print out.
+Labcharts public COM interface was developed incrementally and therefore only a subset of the available commands are actually shown within the `dir()` print out.
 
-A larger subset of commands can be discovered by using the Labchart Macro feature within the application as shown in [Figure 1](#figure-1). The column on the right hand side of the macro editor displays a larger subset of functions available to call from within Python. 
+A larger subset of commands can be discovered within the Labchart Macro feature shown in [Figure 1](#figure-1).
 
 
 <a id="figure-1"></a>
 <figure>
   <img src="macro_editor.png" alt="Labchart Macro Editor" style="width:100%">
-  <figcaption>Figure 1: The Macro Editor window open within Labchart. A list of functions is displayed in a column on the right hand side of the editor. Clicking on a function will display information about the function in the bottom row of the Editor window. </figcaption>
+  <figcaption>Figure 1: The Labchart - Macro Editor window. Functions are listed in the right-hand column. Selecting a function displays extra information, such as a description and the required arguments. </figcaption>
 </figure>
 
-Functions shown in the LabChart Macro Editor that are not directly callable from the COM interface in Python, can still be `invoked`:
+
+Certain functions, though not directly accessible through the COM interface in Python, can still be invoked if they appear in the LabChart Macro Editor or are identified using the Macro recording feature. For example, the `SetGuidelineValue` command:
 
 ```python
 def invoke_com_method(com_object, method_name, *args):
@@ -81,5 +82,7 @@ def invoke_com_method(com_object, method_name, *args):
 invoke_com_method(document, "SetGuidelineValue", channelForGuideLine, 1, 0, "V", "")
 
 ```
+
+A general tip for writing scripts is to first record a macro of the actions you wish to automate. The commands identified in the macro can then be copied across into your Python script. 
 
 ---
