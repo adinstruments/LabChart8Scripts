@@ -1,18 +1,38 @@
 import win32com.client
 import time
+import pythoncom
 
 # ------------------------------------------------------------------------------
 
-def invoke_com_method(com_object, method_name, *args):
+def invoke_com_method(com_object, function_name, *args):
+    """
+    Invokes a method on a COM object by its name.
+
+    Parameters:
+        com_object: The COM object (created using win32com.client.Dispatch).
+        function_name (str): The name of the method to invoke.
+        *args: Arguments to pass to the method.
+
+    Returns:
+        The result of the method call, or None if the method fails.
+    """
     try:
-        # Get the method dynamically
-        method = getattr(com_object, method_name)
-        # Call the method with arguments
-        return method(*args)
-    except AttributeError:
-        print(f"Method '{method_name}' does not exist.")
-    except Exception as e:
-        print(f"Error invoking method '{method_name}': {e}")
+        # Get the DISPID (Dispatch ID) of the function by name
+        dispid = com_object._oleobj_.GetIDsOfNames(0, function_name)
+        
+        # Invoke the function using the DISPID
+        result = com_object._oleobj_.Invoke(
+            dispid,  # DISPID of the function
+            0,  # Reserved, must be 0
+            win32com.client.pythoncom.DISPATCH_METHOD,  # Indicates a method call
+            1,  # Indicates arguments are being passed
+            *args  # Arguments to pass to the function
+        )
+        return result
+    except pythoncom.com_error as e:
+        print(f"Failed to invoke function '{function_name}': {e}")
+        return None
+
 
 
 def getDataFromEndOfLastBlock(doc, channelNumber, duration):
@@ -87,8 +107,6 @@ while True:
     # Update the guidelines with the latest maximum value
     invoke_com_method(doc, "SetGuidelineValue", channelForGuideLine, 1, rollingMaximum, "V", "")
     invoke_com_method(doc, "SetGuideLineValue", channelForGuideLine, 2, rollingMaximum - percentageOfMax/100*rollingMaximum , "V", "")
-
-	
 
 
 
