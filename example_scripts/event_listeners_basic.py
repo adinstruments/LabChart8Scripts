@@ -4,6 +4,12 @@ import pythoncom
 # ------------------------------------------------------------------------------
 
 class LabChartEventHandler:
+    def OnStartSampling(self, *args):
+        """
+        Example event handler called when the sampling session is started (Start button pushed).
+        """
+        print("OnStartSampling called")
+        
     def OnStartSamplingBlock(self, *args):
         """
         Example event handler called when sampling and a new block is about to be added to the document.
@@ -21,9 +27,9 @@ class LabChartEventHandler:
         """
         print("OnNewSamples called")
 
-    def OnBlockFinish(self, *args):
+    def OnFinishSamplingBlock(self, *args):
         """
-        Example event handler called when a block finishes.
+        Example event handler called when a sampling block is ended.
         """
         print("OnBlockFinish called")
 
