@@ -20,10 +20,7 @@ class LabChartEventHandler:
 
     def OnNewSamples(self, *args):
         """
-        Example event handler called when sampling, whenever new samples might be available,
-        typically 20 times a second.
-        This example gets any new samples from channel gChan, appends them to the gChan1Data list,
-        then plots the latest 5000 samples.
+        Example event handler called (roughly 20 times/s) when new samples may be available")
         """
         print("OnNewSamples called")
 
