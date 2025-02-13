@@ -73,36 +73,42 @@ waitTimeBeforeRecalculate = 2   # The time to wait (in seconds) before recalcula
 # Variable to hold the rolling maximum value
 rollingMaximum = 0		        
 
-# Setup the two guidelines
-invoke_com_method(doc, "SetGuidelineValue", channelForGuideLine , 1, 0, "V", "")
-invoke_com_method(doc, "SetGuidelineValue", channelForGuideLine , 2, 0, "V", "")
+# Setup the initial value of guideline 1
+guideLineNumber = 1
+guideLineValue = 0
+guideLineUnits = "V"
+guideLinePrefix = ""
+invoke_com_method(doc, "SetGuidelineValue", channelForGuideLine , guideLineNumber, guideLineValue, guideLineUnits, guideLinePrefix)
+
+# Setup the initial value of guideline 2
+guideLineNumber = 2
+guideLineValue = 0
+guideLineUnits = "V"
+guideLinePrefix = ""
+invoke_com_method(doc, "SetGuidelineValue", channelForGuideLine , guideLineNumber, guideLineValue,guideLineUnits, guideLinePrefix)
 	
 # Set guideline 1 to be visible
-Guideline = 1
-EnableGuideline = True
-ShowGuideline = True
-GuidelineColor = 9013641
-invoke_com_method(doc, "SetGuidelinesInfo", channelForGuideLine, Guideline, EnableGuideline, ShowGuideline, GuidelineColor)
+guidelineNumber = 1
+enableGuideline = True
+showGuideline = True
+guidelineColor = 9013641
+invoke_com_method(doc, "SetGuidelinesInfo", channelForGuideLine, guidelineNumber, enableGuideline, showGuideline, guidelineColor)
 
 # Set guideline 2 to be visible
-Guideline = 2
-EnableGuideline = True
-ShowGuideline = True
-GuidelineColor = 9013641
-invoke_com_method(doc, "SetGuidelinesInfo", channelForGuideLine, Guideline, EnableGuideline, ShowGuideline, GuidelineColor)
+guidelineNumber = 2
+enableGuideline = True
+showGuideline = True
+guidelineColor = 9013641
+invoke_com_method(doc, "SetGuidelinesInfo", channelForGuideLine, guidelineNumber, enableGuideline, showGuideline, guidelineColor)
 	
 # Set guideline shading to be green
-ShadeTop = False
-ShadeTopColor = 12763902
-ShadeMid = True
-ShadeMidColor = 12975793
-ShadeBottom = False
-ShadeBottomColor = 12763902
-invoke_com_method(doc, "SetGuidelineRegionInfo", channelForGuideLine, ShadeTop, ShadeTopColor, ShadeMid, ShadeMidColor, ShadeBottom, ShadeBottomColor)
-
-# Initialise the guidelines to 0
-invoke_com_method(doc, "SetGuidelineValue", channelForGuideLine, 1, 0, "V", "")
-invoke_com_method(doc, "SetGuideLineValue", channelForGuideLine, 2, 0 , "V", "")
+shadeTop = False
+shadeTopColor = 12763902
+shadeMid = True
+shadeMidColor = 12975793
+shadeBottom = False
+shadeBottomColor = 12763902
+invoke_com_method(doc, "SetGuidelineRegionInfo", channelForGuideLine, shadeTop, shadeTopColor, shadeMid, shadeMidColor, shadeBottom, shadeBottomColor)
 
 
 # Loop to check for a new maximum   
