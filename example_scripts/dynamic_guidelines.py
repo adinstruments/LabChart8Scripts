@@ -1,3 +1,14 @@
+# This file contains an example script for controlling LabChart within a Python
+# environment. 
+# 
+# This script generates two guidelines within the channel defined by `channelIndex`.
+# As data is sampled, the first guideline dynamically adjusts to the maximum data 
+# point (within the most recent block), while the second guideline remains fixed 
+# at a user-defined percentage below the maximum.
+#
+# This script must be run after sampling has started.
+
+
 import win32com.client
 import time
 import pythoncom
@@ -34,7 +45,7 @@ def invoke_com_method(com_object, function_name, *args):
         return None
 
 
-
+# Helper function
 def getDataFromEndOfLastBlock(doc, channelNumber, duration):
     lastBlock = doc.NumberOfRecords -1
     secsPerTick = doc.GetRecordSecsPerTick(lastBlock)
@@ -55,7 +66,7 @@ doc = labchart.ActiveDocument
 # User Inputs ------------------------------------------------------------------
 channelForGuideLine = 0         # The channel you want to add guidelines to
 percentageOfMax = 20	        # The percentage of the maximum you want the second guideline to be displayed at
-waitTimeBeforeRecalculate = 2   # The time to wait before recalculating the maximum
+waitTimeBeforeRecalculate = 2   # The time to wait (in seconds) before recalculating the maximum
 
 # ------------------------------------------------------------------------------
 
