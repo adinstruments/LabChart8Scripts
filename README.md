@@ -26,16 +26,13 @@ import win32com.client
 ## Labchart must be open before running this script.
 
 # Instantiate the labchart COM object.
-labchart = win32com.client.Dispatch("ADIChart.Application") 
+labchart = win32com.client.Dispatch("ADIChart.Application")  
 
-# Enter the path to your labchart file e.g "C:/Users/yourname/Documents/your_file.adicht"
-filepath = "" 
-
-# Open the specified document in Labchart   
-document = labchart.Open(filepath)
+# Get the active document   
+document = labchart.ActiveDocument
 
 # Add the comment "Hello World!" to the end of channel 1
-channelIndex = 0 # Note: Labchart lanes are zero indexed. 
+channelIndex = 0 # Note: Labchart channels are zero indexed. 
 document.AddCommentAtEnd(channelIndex, "Hello World!")
 ```
 
