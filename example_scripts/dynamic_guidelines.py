@@ -49,8 +49,7 @@ def getDataFromEndOfLastBlock(doc, channelNumber, duration):
 
 # Connect to Labchart
 labchart = win32com.client.Dispatch("ADIChart.Application") 
-filepath = "C:/Users/jeverts/Documents/Code/python_labchart_macros/test_file.adicht" # Enter the path to your labchart file e.g "C:/Users/yourname/Documents/your_file.adicht"
-doc = labchart.Open(filepath)   # Open the specified document in Labchart   
+doc = labchart.ActiveDocument    
 
 
 # User Inputs ------------------------------------------------------------------
