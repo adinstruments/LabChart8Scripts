@@ -1,3 +1,8 @@
+# This file contains an example script for listening and responding to LabChart 
+# Events within a Python environment. 
+
+# ------------------------------------------------------------------------------
+
 import win32com.client
 import pythoncom
 
@@ -54,70 +59,6 @@ class LabChartEventHandler:
         """
         print("OnCommentAdded called", args)
 
-    def OnDigitalInputChanged(self, *args):
-        """
-        Example event handler called when there's a change in the digital input while sampling.
-
-        Event returns:
-        args[0] = digitalByteOld
-        args[1] = digitalByteNew
-        args[2] = tick
-        """
-        print("OnDigitalInputChanged called", args)
-
-    
-    def OnGuidelineCrossed(self, *args):
-        """
-        Example event handler called when a guideline is crossed in a specified channel.
-
-        Event returns:
-        args[0] = channelNumber
-        args[1] = guidelineNumber
-        args[3] = isRising
-        args[4] = position
-        args[5] = guidelineValue
-        args[6] = signalValue
-        """
-        print("OnGuidelineCrossed called", args)
-
-    def OnKeysPressed(self, *args):
-        """
-        Example event handler called when a key is pressed.
-
-        Event returns:
-        args[0] = key
-        args[1] = isControlKeyDown
-        args[3] = isShiftKeyDown
-        """
-        print("OnKeysPressed called", args)
-
-    def OnDataPadSelectionChanged(self, *args):
-        """
-        Example event handler called when the Data Pad selection changes.
-
-        Event returns:
-        args[0] = Datapad sheet index 
-        args[1] = column
-        args[3] = row
-        args[4] = width
-        args[5] = height
-        """
-        print("OnDataPadSelectionChanged called", args)
-
-    def OnEventDataArrived(self, *args):
-        """
-        Example event handler called when an event from a calculation such as Cyclic Measurements arrives.
-
-        Event returns:
-        args[0] = channelNumber
-        args[1] = isInternalDetectorChannel
-        args[3] = eventValue
-        args[4] = position
-        """
-        print("OnEventDataArrived called", args)
-
-
-    
 # ------------------------------------------------------------------------------
 
 # Connect to Labchart
