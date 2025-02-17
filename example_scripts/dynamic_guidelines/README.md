@@ -7,7 +7,7 @@ at a user-defined percentage below the maximum. The guidelines are reset on each
 
 To use:
 - Open a labchart document
-- Set the channelIndex variable in `dynamic_guidelines.py` to the channel you wish the guidelines to be displayed in.
+- Set the `channelIndex` variable within `dynamic_guidelines.py` to the channel you wish the guidelines to be displayed in.
 - Run the script. The script will run until closed, listening and responding to Labchart events.  
 
 ![dynamic_guidelines script running in Labchart](./dynamic_guidelines_example.gif)
