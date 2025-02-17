@@ -45,15 +45,19 @@ def invoke_com_method(com_object, function_name, *args):
         return None
 
 
-# Helper function
+
 def getDataFromEndOfLastBlock(doc, channelNumber, duration):
-    lastBlock = doc.NumberOfRecords -1
+    """
+    Helper function to fetch data within a specified duration from the end of 
+    the recording.
+    """
+    lastBlock = doc.NumberOfRecords
     secsPerTick = doc.GetRecordSecsPerTick(lastBlock)
     ticksPerSecond = 1/secsPerTick
     n_samples = round(duration*ticksPerSecond)
-    endOfBlockTick = doc.GetRecordLength(lastBlock) # Get the last block
+    endOfBlockTick = doc.GetRecordLength(lastBlock)
     start_sample = endOfBlockTick - n_samples
-    data = doc.GetChannelData(0,channelNumber,lastBlock + 1,start_sample,n_samples)
+    data = doc.GetChannelData(0,channelNumber, lastBlock, start_sample, n_samples)
     return data
 
 # ------------------------------------------------------------------------------
