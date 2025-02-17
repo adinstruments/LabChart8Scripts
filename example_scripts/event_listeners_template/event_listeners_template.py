@@ -26,6 +26,9 @@ class LabChartEventHandler:
     def OnNewSamples(self, *args):
         """
         Example event handler called (roughly 20 times/s) when new samples may be available")
+        
+        Event returns:
+        args[0] = Number of new samples added
         """
         print("OnNewSamples called", args)
 
