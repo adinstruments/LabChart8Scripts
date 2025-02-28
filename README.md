@@ -1,4 +1,4 @@
-# LabChart 8: Python Template Scripts
+# LabChart 8 Scripts
 
 [LabChart 8](https://adi.to/labchart)
 is the gold-standard data aquisition and analysis application from
