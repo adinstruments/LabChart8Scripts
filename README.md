@@ -9,7 +9,7 @@ how to programmatically control the Labchart application using a number of langu
 
 The repository contains:
 
-- [`example_scripts/`](./example_scripts): Examples of Labchart automation using Python and VBScript.
+- [`example_scripts/`](./example_scripts): Examples of Labchart automation using Python, VBScript and C#(.NET).
 
 ---
 
